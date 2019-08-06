@@ -160,7 +160,7 @@
                                         <text class="rankNum numTwo" v-if="index==1">{{index+1}}</text>
                                         <text class="rankNum numThree" v-if="index==2">{{index+1}}</text>
                                         <text class="rankNum numElse" v-if="index>=3">{{index+1}}</text>
-                                        <img :src="item.photo||'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultWoman.png'" class="memberAvatar"/>
+                                        <img :src="item.photo||'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png'" class="memberAvatar"/>
                                         <text class="memberName" >{{item.name}}</text>
                                     </div>
                                     <div class="ranksRight">
