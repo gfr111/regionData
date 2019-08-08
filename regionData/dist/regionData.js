@@ -3364,13 +3364,17 @@ exports.default = {
             trainerList: [],
             selectedNum: 1,
             regionVisibility: 'hidden',
-            componentVisibility: 'hidden'
+            componentVisibility: 'hidden',
+            checkId: -1
         };
     },
     created: function created() {
         var that = this;
         that.height = weex.config.env.deviceHeight;
         nativeMoudle.showProgressDialog();
+        nativeMoudle.getMetaData(function (map) {
+            that.token = map.token;
+        });
         that.popHeight = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
         var myDate = new Date();
         that.today = myDate.getFullYear() + '-' + (myDate.getMonth() + 1 < 10 ? '0' + (myDate.getMonth() + 1) : myDate.getMonth() + 1) + '-' + (myDate.getDate() < 10 ? '0' + myDate.getDate() : myDate.getDate());
@@ -3406,7 +3410,6 @@ exports.default = {
             } else {
                 URL = that.webHost + '/api/trainer/team/report/' + id + '/new';
             }
-
             stream.fetch({
                 method: 'POST',
                 url: URL,
@@ -3445,7 +3448,7 @@ exports.default = {
                             if (ret.data.data.trainers.length > 0) {
                                 var arr = ret.data.data.trainers;
                                 arr.sort(function (a, b) {
-                                    return a.bodyCheckCount - b.bodyCheckCount;
+                                    return b.bodyCheckCount - a.bodyCheckCount;
                                 });
                                 //  nativeMoudle.toast(arr)
                                 that.trainerList = arr;
@@ -3510,7 +3513,7 @@ exports.default = {
                 this.startDate = year + '-' + month + '-' + '01'; //上个月第一天
                 this.endDate = year + '-' + month + '-' + myDates.getDate(); //上个月最后一天
             }
-            this.getData(this.selectedNum, this.parentId);
+            this.getData(this.selectedNum, this.checkId);
         },
         getThisMonth: function getThisMonth(targetDate) {
             var D, y, m, d;
@@ -3531,6 +3534,7 @@ exports.default = {
         toDetail: function toDetail(num, id) {
             var that = this;
             that.selectedNum = num;
+            that.checkId = id;
             if (num == 1) {
                 that.isRegion = true;
             } else {
@@ -3550,23 +3554,23 @@ exports.default = {
             var arr = that.trainerList;
             if (index == 0) {
                 arr.sort(function (a, b) {
-                    return a.bodyCheckCount - b.bodyCheckCount;
+                    return b.bodyCheckCount - a.bodyCheckCount;
                 });
             } else if (index == 1) {
                 arr.sort(function (a, b) {
-                    return a.programCount - b.programCount;
+                    return b.programCount - a.programCount;
                 });
             } else if (index == 2) {
                 arr.sort(function (a, b) {
-                    return a.trialCourseCount - b.trialCourseCount;
+                    return b.trialCourseCount - a.trialCourseCount;
                 });
             } else if (index == 3) {
                 arr.sort(function (a, b) {
-                    return a.completedCourseCount - b.completedCourseCount;
+                    return b.completedCourseCount - a.completedCourseCount;
                 });
             } else if (index == 4) {
                 arr.sort(function (a, b) {
-                    return a.patrolCount - b.patrolCount;
+                    return b.patrolCount - a.patrolCount;
                 });
             }
             that.trainerList = arr;
@@ -3957,7 +3961,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(index + 1))]) : _vm._e(), _c('img', {
       staticClass: ["memberAvatar"],
       attrs: {
-        "src": item.photo || 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultWoman.png'
+        "src": item.photo || 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png'
       }
     }), _c('text', {
       staticClass: ["memberName"]
