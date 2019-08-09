@@ -3429,9 +3429,14 @@ exports.default = {
                         that.bodyCheckCount = ret.data.data.bodyCheckCount;
                         that.trainProgramCount = ret.data.data.trainProgramCount;
                         if (id != -1) {
-                            that.title = ret.data.data.currentRegion.name;
-                            that.parentId = ret.data.data.currentRegion.parentId;
-                            that.currentRegion = ret.data.data.currentRegion;
+                            if (ret.data.data.currentRegion == '' || ret.data.data.currentRegion == null || ret.data.data.currentRegion == undefined) {
+                                that.title = '总区域';
+                                that.parentId = -1;
+                            } else {
+                                that.title = ret.data.data.currentRegion.name;
+                                that.parentId = ret.data.data.currentRegion.parentId;
+                                that.currentRegion = ret.data.data.currentRegion;
+                            }
                         } else {
                             that.currentRegion = null;
                             that.parentId = -1;

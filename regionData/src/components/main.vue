@@ -293,13 +293,18 @@
                                  that.trialCourseCount=ret.data.data.trialCourseCount;
                                  that.bodyCheckCount=ret.data.data.bodyCheckCount;
                                  that.trainProgramCount=ret.data.data.trainProgramCount;                                  
-                                if(id!=-1){
-                                    that.title=ret.data.data.currentRegion.name;
-                                    that.parentId=ret.data.data.currentRegion.parentId;
-                                    that.currentRegion=ret.data.data.currentRegion;
+                                if(id!=-1){         
+                                    if(ret.data.data.currentRegion==''||ret.data.data.currentRegion==null||ret.data.data.currentRegion==undefined){
+                                        that.title='总区域';
+                                        that.parentId=-1;
+                                    }else{
+                                        that.title=ret.data.data.currentRegion.name;
+                                        that.parentId=ret.data.data.currentRegion.parentId;
+                                        that.currentRegion=ret.data.data.currentRegion;
+                                    }
                                 }else{
-                                    that.currentRegion=null;
-                                    that.parentId=-1;
+                                     that.currentRegion=null;
+                                     that.parentId=-1;
                                 } 
                                  if(num==1){
                                         that.regionList=ret.data.data.regionInfosData;         
