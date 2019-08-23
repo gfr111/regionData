@@ -3342,7 +3342,7 @@ exports.default = {
     data: function data() {
         return {
             token: 'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-            webHost: 'http://10.0.0.216:9090',
+            webHost: 'https://www.woshipt.com',
             qselectList: [{ name: '昨天', index: 0, selected: false }, { name: '今天', index: 1, selected: true }, { name: '本月', index: 2, selected: false }, { name: '上月', index: 3, selected: false }],
             today: '',
             startDate: '',
@@ -3370,12 +3370,18 @@ exports.default = {
     },
     created: function created() {
         var that = this;
-        that.height = weex.config.env.deviceHeight;
+        // that.height = weex.config.env.deviceHeight;
         nativeMoudle.showProgressDialog();
+        // nativeMoudle.toastSuccess('ceshi')
         nativeMoudle.getMetaData(function (map) {
             that.token = map.token;
         });
-        that.popHeight = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        if (weex.config.env.platform == 'iOS') {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight - 60;
+        } else {
+            that.height = weex.config.env.deviceHeight;
+        }
+
         var myDate = new Date();
         that.today = myDate.getFullYear() + '-' + (myDate.getMonth() + 1 < 10 ? '0' + (myDate.getMonth() + 1) : myDate.getMonth() + 1) + '-' + (myDate.getDate() < 10 ? '0' + myDate.getDate() : myDate.getDate());
         that.startDate = that.today;
@@ -3624,7 +3630,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.close
     }
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["returnIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png"
@@ -3653,7 +3659,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.getTime(2)
       }
     }
-  }, [_vm._v("至" + _vm._s(_vm.endDate.substring(0, 4) + '-' + _vm.endDate.substring(5, 7) + '-' + _vm.endDate.substring(8, 10)))]) : _vm._e()]), _c('img', {
+  }, [_vm._v("至" + _vm._s(_vm.endDate.substring(0, 4) + '-' + _vm.endDate.substring(5, 7) + '-' + _vm.endDate.substring(8, 10)))]) : _vm._e()]), _c('image', {
     staticClass: ["chengeTimeIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/timeChangeIcon.png"
@@ -3678,7 +3684,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: ["regionDataTitle"]
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["regionIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/dataIcon1.png"
@@ -3738,7 +3744,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.toDetail(1, item.id)
         }
       }
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["bgIcon"],
       attrs: {
         "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionBg.png"
@@ -3828,7 +3834,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.toDetail(2, item.clubId)
         }
       }
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["bgIcon"],
       attrs: {
         "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionBg.png"
@@ -3914,7 +3920,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     style: {
       visibility: _vm.regionVisibility
     }
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["emptyIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png"
@@ -3963,7 +3969,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: ["rankNum", "numThree"]
     }, [_vm._v(_vm._s(index + 1))]) : _vm._e(), (index >= 3) ? _c('text', {
       staticClass: ["rankNum", "numElse"]
-    }, [_vm._v(_vm._s(index + 1))]) : _vm._e(), _c('img', {
+    }, [_vm._v(_vm._s(index + 1))]) : _vm._e(), _c('image', {
       staticClass: ["memberAvatar"],
       attrs: {
         "src": item.photo || 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png'
@@ -3988,7 +3994,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     style: {
       visibility: _vm.componentVisibility
     }
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["emptyIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png"
@@ -4061,7 +4067,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       alignItems: "center",
       backgroundColor: "#F6F6F6"
     }
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["regionIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/dataIcon2.png"
@@ -4072,7 +4078,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["titleLeft"]
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["regionIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/dataIcon2.png"

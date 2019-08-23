@@ -3,7 +3,7 @@
         <div class="regionBox" :style="{height:height}">
             <div class="headerBox">
                 <div class="leftBox" @click="close">
-                    <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png" class="returnIcon" />
+                    <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png" class="returnIcon" />
                     <text style="color:#ffffff;">{{title}}</text>
                 </div>
             </div>
@@ -13,7 +13,7 @@
                        <text  class="planDate" @click="getTime(1)">{{startDate.substring(0, 4) + '-' + startDate.substring(5, 7) + '-' + startDate.substring(8, 10)}}</text>
                        <text  class="planDate"  @click="getTime(2)" v-if="timeIndex!=0&&timeIndex!=1">至{{endDate.substring(0, 4) + '-' + endDate.substring(5, 7) + '-' + endDate.substring(8, 10)}}</text>
                   </div>
-                  <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/timeChangeIcon.png" class="chengeTimeIcon"/>
+                  <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/timeChangeIcon.png" class="chengeTimeIcon"/>
               </div>
               <div class="rightTimeBox">
                  <text v-for="(item,index) in qselectList" :key="index" :class="[item.selected?'selects':'content']" @click="changeDate(item.index)">{{item.name}}</text>
@@ -21,7 +21,7 @@
             </div>
             <div class="regionDataBox" style="padding-left:23px;padding-right:23px;">
                 <div class="regionDataTitle">
-                    <img class="regionIcon" src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/dataIcon1.png"/>
+                    <image class="regionIcon" src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/dataIcon1.png"/>
                     <text class="regionName">{{title}}</text>
                 </div>
                 <div class="regionDataContent">
@@ -64,14 +64,14 @@
             </div>
             <div class="regionContent" v-if="isRegion" style="background:#ffffff;" >
                  <div style="padding-left:23px;padding-bottom:33px;padding-top:30px;flex-direction: row;align-items: center;background-color: #F6F6F6;">
-                    <img class="regionIcon" src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/dataIcon2.png"/>
+                    <image class="regionIcon" src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/dataIcon2.png"/>
                     <text class="regionName">区域/门店数据</text>
                  </div>
                   <list :style="{height:height-420}" style="background:#ffffff;" >
                     <cell>
                         <div class="regionDataBox" style="padding-left:10px;">                          
                             <div class="listItem" @click="toDetail(1,item.id)" v-for="(item,index) in regionList" :key="index" v-if="regionList.length!=0">
-                                <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionBg.png" class="bgIcon"/>
+                                <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionBg.png" class="bgIcon"/>
                                 <div class="listContent">
                                     <div class="listItemTop">
                                         <text class='dataName'>{{item.regionName}}</text>
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                             <div class="listItem" @click="toDetail(2,item.clubId)" v-for="(item,index) in centerList" :key="index" v-if="centerList.length!=0">
-                                    <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionBg.png" class="bgIcon"/>
+                                    <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionBg.png" class="bgIcon"/>
                                     <div class="listContent">
                                         <div class="listItemTop">
                                             <text class='dataName'>{{item.clubName}}</text>
@@ -133,7 +133,7 @@
                                     </div>
                                 </div>
                             <div class="emptyBox"  v-if="regionList.length==0&&centerList.length==0" :style="{visibility: regionVisibility}">
-                                <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png" class="emptyIcon"/>
+                                <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png" class="emptyIcon"/>
                                 <text class="emptyTxt"></text>
                            </div>
                         </div>
@@ -143,7 +143,7 @@
             <div class="clubContent"  v-else>
                 <div class="centerDataTitle">
                     <div class="titleLeft">
-                        <img class="regionIcon" src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/dataIcon2.png"/>
+                        <image class="regionIcon" src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/dataIcon2.png"/>
                         <text class="regionName">数据排名</text>
                     </div>
                     <div class="titleRight">
@@ -160,7 +160,7 @@
                                         <text class="rankNum numTwo" v-if="index==1">{{index+1}}</text>
                                         <text class="rankNum numThree" v-if="index==2">{{index+1}}</text>
                                         <text class="rankNum numElse" v-if="index>=3">{{index+1}}</text>
-                                        <img :src="item.photo||'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png'" class="memberAvatar"/>
+                                        <image :src="item.photo||'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png'" class="memberAvatar"/>
                                         <text class="memberName" >{{item.name}}</text>
                                     </div>
                                     <div class="ranksRight">
@@ -172,7 +172,7 @@
                                     </div>
                                 </div>   
                                  <div class="emptyBox" v-if="trainerList.length==0" :style="{visibility: componentVisibility}">
-                                    <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png" class="emptyIcon"/>
+                                    <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png" class="emptyIcon"/>
                                     <text class="emptyTxt">该区域暂无内容</text>
                                 </div>                                                  
                             </div>
@@ -196,7 +196,7 @@
         data(){
             return{
                 token:'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-                webHost:'http://10.0.0.216:9090',
+                webHost:'https://www.woshipt.com',
                 qselectList:[
                   {name:'昨天',index:0,selected:false},
                   {name:'今天',index:1,selected:true},
@@ -235,12 +235,18 @@
         },
         created(){
             var that=this;
-            that.height = weex.config.env.deviceHeight;
+            // that.height = weex.config.env.deviceHeight;
             nativeMoudle.showProgressDialog(); 
+            // nativeMoudle.toastSuccess('ceshi')
             nativeMoudle.getMetaData(function(map){
                 that.token=map.token;       
             });
-            that.popHeight = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight+30;    
+             if(weex.config.env.platform=='iOS'){
+                  that.height =750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight-60;
+              }else{
+                  that.height = weex.config.env.deviceHeight;
+              }
+
             var myDate = new Date();
             that.today=myDate.getFullYear()+'-'+((myDate.getMonth()+1)<10?'0'+(myDate.getMonth()+1):(myDate.getMonth()+1))+'-'+(myDate.getDate()<10?'0'+myDate.getDate():myDate.getDate());
             that.startDate=that.today;
